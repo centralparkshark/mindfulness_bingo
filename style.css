@@ -1,0 +1,139 @@
+:root {
+    --main: #B23A48;
+    --secondary: #FCB9B2;
+    --light2: #FED0BB;
+    --accent: #8C2F39;
+    --darkAccent: #461220;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+    font-family: 'Josefin Sans', Arial, Helvetica, sans-serif;
+    background-color: var(--main);
+    color: var(--light2);
+}
+
+h1, button {
+    margin: 10px;
+}
+
+h2 {
+    margin: 0;
+}
+
+button {
+    background-color: var(--light2);
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    color: var(--darkAccent);
+    font-family: inherit;
+    max-width: 100px;
+    cursor: pointer;
+}
+
+#bingoCard {
+    border: 2px solid var(--darkAccent);
+    height: 70vh;
+    width: 70vh;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: var(--secondary);
+    color: var(--darkAccent);
+    overflow: hidden;
+}
+
+.bingoSpot {
+    border: var(--darkAccent) 2px solid;
+    height: 20%;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.bingoSpot.done {
+    background-color: var(--main);
+    color: var(--light2);
+}
+
+.bingoSpot:hover {
+    background-color: var(--light2);
+    cursor: pointer;
+}
+
+.bingoSpot.done:hover {
+    color: var(--darkAccent);
+}
+
+.bingoSpot:hover .title, .bingoSpot:hover .icon{
+    scale: 110%;
+}
+
+.popupCtn {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color:#4612206e;
+    display: flex;
+    display: none;
+}
+
+.popup {
+    background-color: var(--darkAccent);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border-radius: 16px;
+    margin: auto;
+    height: fit-content;
+    width: 80%;
+    position: relative;
+}
+.popup h1 {
+    margin-left: 0;
+}
+.popup .info {
+    line-height: 150%;
+    padding-left: 4px;
+}
+
+.popup button {
+    align-self: flex-end;
+}
+
+.popup i {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    #bingoCard {
+        width: 90vw;
+        height: 90vw;
+    }
+    body {
+        font-size: 12px;
+    }
+}
+@media (max-height: 600px) {
+    body {
+        font-size: 12px;
+    }
+}
