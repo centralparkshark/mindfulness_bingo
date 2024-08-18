@@ -99,14 +99,47 @@ function changeTheme() {
     }
 }
 
+const nameBtn = document.getElementById('nameBtn')
+const popUp = document.getElementById('popup')
+const nameInput = document.getElementById('name');
+const nameError = document.getElementById('nameError');
+
+nameBtn.addEventListener('click', openName)
+
+function openName() {
+    popupCtn.style.display = "flex";
+    nameBox.style.display = "flex";
+    popUp.style.display = "none";
+}
+
+function validateName(name) {
+    const namePattern = /^[a-zA-Z\s]{2,20}$/;
+    return namePattern.test(name);
+}
+
+document.getElementById('nameBox').addEventListener('submit', function (event) {
+    event.preventDefault();
+    if (!validateName(nameInput.value)) {
+        nameError.textContent = 'Name should only contain letters.';
+    }
+    else {
+        document.getElementById('welcome').innerText = `Click an activity, ${nameInput.value}`
+        nameBox.style.display = "flex";
+        popUp.style.display = "flex";
+        popupCtn.style.display = "none";
+        nameBox.style.display = "none";
+        nameInput.value = '';
+    }
+});
+
 // To Do Today:
-// also event based validation on input
 // Read me
 
 //To-Do Later:
 // check bingo win
 // Add local storage
 //goal persist (save state)
+// cancel button for name change
 
 
 

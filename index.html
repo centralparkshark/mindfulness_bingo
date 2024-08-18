@@ -14,18 +14,26 @@
 </head>
 <body>
     <h1>Mindfulness Bingo</h1>
-    <h2>Click an activity</h2>
+    <h2 id="welcome">Click an activity</h2>
     <div class="buttonBox">
         <button class="reset" id="reset">Reset Board</button>
         <button id="theme">Change Theme</button>
+        <button id="nameBtn">Change Name</button>
     </div>
     <div id="bingoCard" theme="dark"></div>
 
     <div class="popupCtn" id="popupCtn">
         <div class="popup" id="popup"></div>
+        <form id="nameBox" class="popUpName">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your name..">
+            <span id="nameError"></span>
+            <input type="submit" value="Submit">
+        </form>
     </div>
     
     <button class="win" id="win">I got bingo!!</button>
+
 </body>
 </html>
 

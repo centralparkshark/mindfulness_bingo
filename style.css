@@ -82,7 +82,7 @@ button {
     scale: 110%;
 }
 
-.popupCtn {
+.popupCtn, .popUpNameCtn {
     position: absolute;
     left: 0;
     right: 0;
@@ -93,7 +93,7 @@ button {
     display: none;
 }
 
-.popup {
+.popup, .popUpName {
     background-color: var(--darkAccent);
     display: flex;
     flex-direction: column;
@@ -104,6 +104,15 @@ button {
     width: 80%;
     position: relative;
 }
+
+.popUpName {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    height: 200px;
+    display: none;
+}
+
 .popup h1 {
     margin-left: 0;
 }
