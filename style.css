@@ -137,3 +137,13 @@ button {
         font-size: 12px;
     }
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+}
+
+form::after {
+    content: '* Input will be released into the void upon entering.'
+}
