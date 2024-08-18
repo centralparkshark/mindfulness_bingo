@@ -68,25 +68,46 @@ function clearBoard() {
     if (confirm("Are you sure you want to clear the board?")) {
         bingoCard.innerHTML = ''
         //TO-DO: data trues need reset
-        activities = [];
-        getData();
+        activities.forEach(element => {
+            element.done = false;
+        });
+        generateBoard(activities);
     }
 }
 
-// const winBtn = document.getElementById("win")
-// winBtn.addEventListener('click', checkIfBingo())
+const winBtn = document.getElementById("win")
+winBtn.addEventListener('click', checkIfBingo)
 
-// function checkIfBingo() {
-//     // To-Do: Check for win
-// }
+function checkIfBingo() {
+    // fake win for now
+    alert("[Real Win to Be Implemented] Congrats! See what other activities you can do!")
+}
 
-//To-Do:
+const themeBtn = document.getElementById("theme")
+themeBtn.addEventListener('click', changeTheme)
+
+function changeTheme() {
+    let theme = bingoCard.getAttribute("theme")
+    if (theme == "dark") {
+        bingoCard.parentNode.style.backgroundColor = "var(--light2)"
+        bingoCard.parentNode.style.color = "var(--accent)"
+        bingoCard.setAttribute("theme", "light")
+    } else {
+        bingoCard.parentNode.style.backgroundColor = "var(--main)"
+        bingoCard.parentNode.style.color = "var(--light2)"
+        bingoCard.setAttribute("theme", "dark")
+    }
+}
+
+// To Do Today:
 // also event based validation on input
-// Use at least two Browser Object Model (BOM) properties or methods.
-// Add local storage
-// Use the parent-child-sibling relationship to navigate between elements at least once (firstChild, lastChild, parentNode, nextElementSibling, etc.).
-// Modify at least one attribute of an element in response to user interaction.
 // Read me
+
+//To-Do Later:
+// check bingo win
+// Add local storage
+//goal persist (save state)
+
 
 
 activities = [
@@ -113,7 +134,7 @@ activities = [
     {"id": 20, "title": "Posture Check", "info": "Sit or stand still and notice your posture, adjusting it to feel more aligned and relaxed.", "icon": "face-smile", "done": false},
     {"id": 21, "title": "Goal Setting", "info": "<p>Take time to set a goal with intention, focusing on how achieving it will make you feel and the steps needed to reach it.</p><form id='goal'><label for='goal'>What is your goal?</label><input type='text' name='goal' id='goal' placeholder='Enter your goal..' required minLength='2'><button id='saveGoal'>Save Goal</button></form>", "icon": "face-smile", "done": false},
     {"id": 22, "title": "Mindful Laughter", "info": "Engage in genuine laughter, noticing how it feels in your body and the joy it brings.", "icon": "face-smile", "done": false},
-    {"id": 23, "title": "Set a Morning Routine", "info": "Start your day by being fully present during your morning routine, whether it's brushing your teeth or making breakfast.", "icon": "face-smile", "done": false},
+    {"id": 23, "title": "Morning Routine", "info": "Start your day by being fully present during your morning routine, whether it's brushing your teeth or making breakfast.", "icon": "face-smile", "done": false},
     {"id": 24, "title": "Go to a Museum", "info": "Look at an exhibit and observe its details, colors, and the emotions it evokes in you.", "icon": "face-smile", "done": false},
 ]
 
