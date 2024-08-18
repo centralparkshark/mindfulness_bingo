@@ -1,18 +1,22 @@
-const activities = [
-    {id: 0, title: "Box Breathing", info: "testing", icon: "face-smile", done: false},
-    {id: 1, title: "Test", info: "loremklsdfhsdjkfhfulafhaklfjh jsfdhajlfahsejfh ausfh rufg hargf uierghuakrjehgnaurgjhrng jahnfjdfdgh aujdg hasufgj hafguj ahfg ujkergh iuaklregdsg ", icon: "leaf", done: false},
-    {id: 2, title: "Test", info: "testing", icon: "heart", done: true},
-    {id: 3, title: "Test", info: "testing", icon: "droplet", done: false},
-    {id: 4, title: "Test", info: "testing", icon: "eye", done: false},
-]
-// middle should be free space
+//import file from "./content.json" with { type: "json"}
+let activities = []; 
+
+async function getData() {
+    fetch("./content.json")
+    .then((res) => res.json())
+    .then((data) => {activities.push(data);
+        generateBoard(data);
+    }) 
+}
+
+getData();
 
 const bingoCard = document.getElementById("bingoCard")
 const popupCtn = document.querySelector("#popupCtn")
 const popup = document.getElementById("popup")
 
-function generateBoard() {
-    activities.forEach(element => {
+function generateBoard(items) {
+    items.forEach(element => {
         const bingoSpot = document.createElement("div")
         bingoSpot.setAttribute( "id", element.id );
         bingoSpot.classList.add("bingoSpot")
@@ -31,7 +35,7 @@ function generateBoard() {
 
 
 function openPopup() {
-    let obj = (activities[this.id])
+    let obj = (activities[0][this.id])
     popupCtn.style.display = "flex";
     popup.innerHTML = `<h1 class="title">${obj.title}</h1>
             <div class="info">${obj.info}</div>
@@ -40,12 +44,12 @@ function openPopup() {
     const closeBtn = document.getElementById("closeBtn")
     closeBtn.addEventListener('click', closePopup)
     const toggleStatusBtn = document.getElementById("toggleStatus")
-    console.log(obj)
+    //console.log(obj)
     toggleStatusBtn.addEventListener('click', () => {
-        activities[this.id].done = !activities[this.id].done;
+        obj.done = !obj.done;
         closePopup();
-        console.log(activities[this.id])
-        bingoCard.childNodes[this.id].classList.toggle("done")
+
+        bingoCard.childNodes[this.id].classList.toggle("done");
     })
 }
 
@@ -54,9 +58,17 @@ function closePopup() {
     //To-Do: Add close modal on click outside
 }
 
+const resetBtn = document.getElementById("reset");
+resetBtn.addEventListener('click', clearBoard);
 
-
-generateBoard();
+function clearBoard() {
+    if (confirm("Are you sure you want to clear the board?")) {
+        bingoCard.innerHTML = ''
+        //TO-DO: data trues need reset
+        activities = [];
+        getData();
+    }
+}
 
 //To-Do:
 // Make reset button work (settings screen?)
