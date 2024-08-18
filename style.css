@@ -144,6 +144,16 @@ form {
     max-width: fit-content;
 }
 
-form::after {
+input[type="text"] {
+    padding: 4px 10px;
+    margin: 4px 0;
+}
+
+form#gratitude::after {
     content: '* Input will be released into the void upon entering.'
+}
+
+form#goal button {
+    align-self:flex-start;
+    margin-left: 0;
 }
