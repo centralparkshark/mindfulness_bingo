@@ -67,7 +67,6 @@ resetBtn.addEventListener('click', clearBoard);
 function clearBoard() {
     if (confirm("Are you sure you want to clear the board?")) {
         bingoCard.innerHTML = ''
-        //TO-DO: data trues need reset
         activities.forEach(element => {
             element.done = false;
         });
@@ -132,14 +131,13 @@ document.getElementById('nameBox').addEventListener('submit', function (event) {
     }
 });
 
-// To Do Today:
-// Read me
-
 //To-Do Later:
 // check bingo win
 // Add local storage
 //goal persist (save state)
 // cancel button for name change
+// fix light mode pop up color scheme
+// get random activity
 
 
 
